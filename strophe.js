@@ -945,7 +945,7 @@ Strophe = {
      *      This defaults to 0.1, and with default wait, 6 seconds.
      */
     TIMEOUT: 1.1,
-    SECONDARY_TIMEOUT: 0.1,
+    SECONDARY_TIMEOUT: 1.1,
 
     /** Function: addNamespace
      *  This function is used to extend the current namespaces in
