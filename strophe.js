@@ -945,7 +945,7 @@ Strophe = {
      *      This defaults to 0.1, and with default wait, 6 seconds.
      */
     TIMEOUT: 1.1,
-    SECONDARY_TIMEOUT: 1.1,
+    SECONDARY_TIMEOUT: 0.1,
 
     /** Function: addNamespace
      *  This function is used to extend the current namespaces in
@@ -3290,7 +3290,7 @@ Strophe.Connection.prototype = {
           this._addSysHandler(this._auth1_cb.bind(this), null, null,
                               null, "_auth_1");
 
-          this.send($iq({
+          this.send(window.$iq({
             type: "get",
             to: this.domain,
             id: "_auth_1"
@@ -3461,11 +3461,11 @@ Strophe.Connection.prototype = {
 
             var resource = Strophe.getResourceFromJid(this.jid);
             if (resource) {
-                this.send($iq({type: "set", id: "_bind_auth_2"})
+                this.send(window.$iq({type: "set", id: "_bind_auth_2"})
                           .c('bind', {xmlns: Strophe.NS.BIND})
                           .c('resource', {}).t(resource).tree());
             } else {
-                this.send($iq({type: "set", id: "_bind_auth_2"})
+                this.send(window.$iq({type: "set", id: "_bind_auth_2"})
                           .c('bind', {xmlns: Strophe.NS.BIND})
                           .tree());
             }
@@ -3508,7 +3508,7 @@ Strophe.Connection.prototype = {
                     this._addSysHandler(this._sasl_session_cb.bind(this),
                                         null, null, null, "_session_auth_2");
 
-                    this.send($iq({type: "set", id: "_session_auth_2"})
+                    this.send(window.$iq({type: "set", id: "_session_auth_2"})
                                   .c('session', {xmlns: Strophe.NS.SESSION})
                                   .tree());
                 } else {
